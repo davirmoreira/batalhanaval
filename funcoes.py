@@ -36,3 +36,16 @@ def posiciona_frota(info_navios):
                 y = x[j]
                 tabuleiro[y[0]][y[1]] = 1
     return tabuleiro
+
+def afundados(frota, tabuleiro):
+    cont = 0
+    for nome in frota:
+        navios = frota[nome]
+        for navio in navios:
+            afundado = True
+            for posicao in navio:
+                if tabuleiro[posicao[0]][posicao[1]] != 'X':
+                    afundado = False
+            if afundado:
+                cont += 1
+    return cont
