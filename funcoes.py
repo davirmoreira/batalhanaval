@@ -22,3 +22,17 @@ def faz_jogada(tabuleiro,linha,coluna):
         tabuleiro[linha][coluna] = "-"
 
     return tabuleiro
+
+def posiciona_frota(info_navios):
+    tabuleiro = []
+    for i in range(10):
+        tabuleiro.append([0]*10)
+
+    for navios in info_navios:
+        navio = info_navios[navios]
+        for i in range(len(navio)):
+            x = navio[i]
+            for j in range(len(x)):
+                y = x[j]
+                tabuleiro[y[0]][y[1]] = 1
+    return tabuleiro
