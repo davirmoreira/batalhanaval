@@ -1,3 +1,5 @@
+import random
+
 def define_posicoes(linha,coluna,orientacao,tamanho):
     x = []
     for i in range(tamanho):
@@ -151,3 +153,19 @@ while jogando:
     if afundados(frota_oponente, tabuleiro_oponente) == total_navios:
         print("Parabéns! Você derrubou todos os navios do seu oponente!")
         jogando = False
+
+
+    else:
+        sorteando = True
+        while sorteando:
+            linha = random.randint(0, 9)
+            coluna = random.randint(0, 9)
+            if tabuleiro_jogador[linha][coluna] != 'X' and tabuleiro_jogador[linha][coluna] != '-':
+                sorteando = False
+
+        print(f"Seu oponente está atacando na linha {linha} e coluna {coluna}")
+        tabuleiro_jogador = faz_jogada(tabuleiro_jogador, linha, coluna)
+
+        if afundados(frota, tabuleiro_jogador) == total_navios:
+            print("Xi! O oponente derrubou toda a sua frota =(")
+            jogando = False
